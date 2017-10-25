@@ -15,7 +15,11 @@ namespace StackOverflow.Models
 		public string Title { get; set; }
 
 		[Required]
+        [Display(Name = "Question Content")]
 		public string BodyContent { get; set; }
+
+        [Required]
+        public string Tag { get; set; }
 
 		public bool IsClosed { get; set; }
 
@@ -24,8 +28,6 @@ namespace StackOverflow.Models
 		public DateTime PostDate { get; set; }
 
 		public virtual ApplicationUser User { get; set; }
-
-		public virtual ICollection<Tag> Tags { get; set; }
 
 		public virtual ICollection<Answer> Answers { get; set; }
 

@@ -21,6 +21,7 @@ namespace StackOverflow.Models
 		public DbSet<Tag> Tags { get; set; }
 		public DbSet<QuestionComment> QuestionComments { get; set; }
 		public DbSet<AnswerComment> AnswerComments { get; set; }
+        public DbSet<Profile> Profiles { get; set; }
 
 		protected override void OnModelCreating(ModelBuilder builder)
 		{

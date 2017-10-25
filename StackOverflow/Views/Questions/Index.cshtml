@@ -1,0 +1,54 @@
+﻿@model IEnumerable<StackOverflow.Models.Question>
+
+@{
+    ViewData["Title"] = "Questions";
+ }
+
+
+
+@if(Model == null)
+{
+    <img src="~/images/Web-under-construction.jpg" alt="under construction" style="height: 700px; widows: 1000px;" />
+
+}
+else
+{
+    <h2>Question List</h2>
+
+    <p>
+        <a href="@Url.Action("Create")" class="btn btn-lg btn-primary">
+            <i class="fa fa-2x fa-plus" aria-hidden="true"></i>
+            <span>Create New </span>
+
+        </a>
+    </p>
+    <hr />
+
+
+    <div>
+        @foreach (var question in Model)
+        {
+            <a href="@Url.Action("Details", new { questionId = question.QuestionId})">
+		        <h4 class="card-title">@question.Title</h4>
+	        </a>
+            
+		        if (question.BodyContent.Length > 50) {
+		            <h4 class="card-title">@question.BodyContent.Substring(0, 50)</h4>
+
+		        }
+	             else
+	            {
+	               <p>@question.BodyContent</p>
+   
+	            }
+		                
+
+                <div>
+                     <a href="@Url.Action("QuestionsByTag", "Tags")"><p class="badge badge-info">@question.Tag</p></a>
+                    
+                 </div>			        
+
+            
+        }
+    </div>
+}

@@ -16,8 +16,5 @@ namespace StackOverflow.Models
 		[Required]
 		public string Description { get; set; }
 
-		public int QuestionId { get; set; }
-		public virtual Question Question { get; set; }
-
 	}
 }

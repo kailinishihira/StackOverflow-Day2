@@ -1,0 +1,56 @@
+﻿ @model StackOverflow.Models.Question
+
+@{
+    ViewData["Title"] = "Create New Question";
+ }
+
+ <h2>@Model.Title</h2>
+
+ <hr />
+
+<div>
+	<p>@Model.BodyContent</p>
+    
+</div>
+    <a href="@Url.Action("QuestionsByTag", "Tags")"><p class="badge badge-info">@Model.Tag</p></a>
+    <hr>
+<div>
+
+	<p>Asked <span class="badge badge-info">@Model.PostDate</p>
+    <p>@Model.User</p>
+	</span>
+
+
+<div> 
+    @foreach(var answer in Model.Answers)
+		{
+		<div class="row">
+			<div class="col-md-2">
+			</div>
+			<div class="col-md-8">
+				<p>@answer.BodyContent</p>
+				<p>Answered: <span class="badge badge-info">@answer.PostDate</span></p>
+            </div>
+
+		</div>
+		}
+
+
+</div>
+
+	
+<div>
+    <hr />
+    <a href="@Url.Action("Edit", new { id = Model.QuestionId})" class="btn btn-info">
+        <i class="fa fa-2x fa-pencil-square-o" aria-hidden="true"></i>
+        <span>Edit</span>
+    </a> 
+    <a href="@Url.Action("Delete", new { id = Model.QuestionId})" class="btn btn-danger">
+        <i class="fa fa-2x fa-trash" aria-hidden="true"></i>
+        <span>Delete</span>
+    </a> 
+    <a href="@Url.Action("Index")" class="btn btn-default">
+        <i class="fa fa-2x fa-arrow-circle-left" aria-hidden="true"></i>
+        <span>Back to list</span>
+    </a>
+</div>

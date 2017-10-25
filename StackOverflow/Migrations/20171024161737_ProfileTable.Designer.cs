@@ -8,9 +8,10 @@ using StackOverflow.Models;
 namespace StackOverflow.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20171024161737_ProfileTable")]
+    partial class ProfileTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2");
@@ -269,9 +270,6 @@ namespace StackOverflow.Migrations
                     b.Property<DateTime>("PostDate")
                         .ValueGeneratedOnAddOrUpdate();
 
-                    b.Property<string>("Tag")
-                        .IsRequired();
-
                     b.Property<string>("Title")
                         .IsRequired();
 
@@ -319,7 +317,11 @@ namespace StackOverflow.Migrations
                     b.Property<string>("Name")
                         .IsRequired();
 
+                    b.Property<int>("QuestionId");
+
                     b.HasKey("TagId");
+
+                    b.HasIndex("QuestionId");
 
                     b.ToTable("Tags");
                 });
@@ -409,6 +411,14 @@ namespace StackOverflow.Migrations
                     b.HasOne("StackOverflow.Models.ApplicationUser", "User")
                         .WithMany("QuestionComments")
                         .HasForeignKey("UserId");
+                });
+
+            modelBuilder.Entity("StackOverflow.Models.Tag", b =>
+                {
+                    b.HasOne("StackOverflow.Models.Question", "Question")
+                        .WithMany("Tags")
+                        .HasForeignKey("QuestionId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
         }
     }

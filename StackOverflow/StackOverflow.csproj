@@ -13,6 +13,7 @@
     <Folder Include="Views\" />
     <Folder Include="Views\Account\" />
     <Folder Include="Views\Shared\" />
+    <Folder Include="Views\Questions\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,4 +29,12 @@
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.1.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="Migrations\20171024154048_EtendedUsersTable.Designer.cs" />
+    <Compile Remove="Migrations\20171024154048_EtendedUsersTable.cs" />
+    <Compile Remove="Migrations\20171024154219_ExtendedUsersTable.Designer.cs" />
+    <Compile Remove="Migrations\20171024154219_ExtendedUsersTable.cs" />
+    <Compile Remove="Migrations\20171024155117_AspNetUsersProfilePicProperty.Designer.cs" />
+    <Compile Remove="Migrations\20171024155117_AspNetUsersProfilePicProperty.cs" />
+  </ItemGroup>
 </Project>

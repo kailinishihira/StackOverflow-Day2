@@ -10,11 +10,7 @@ namespace StackOverflow.ViewModels
         [Display(Name = "Email")]
         public string Email { get; set; }
 
-        [Required]
-        [Display(Name = "User Name")]
-        public string UserName { get; set; }
-
-        [Required]
+       [Required]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
